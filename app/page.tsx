@@ -19,6 +19,8 @@ import {
 import NeuralNetworkBackground from './components/NeuralNetworkBackground';
 import FloatingCodeParticles from './components/FloatingCodeParticles';
 import ScrollReveal from './components/ScrollReveal';
+import TypingHeader from './components/TypingHeader';
+import TypingText from './components/TypingText';
 
 const EXPERIENCE = [
   {
@@ -32,7 +34,7 @@ const EXPERIENCE = [
       'Benchmarked sub-500ms median latency (p50: 485ms, p95: 1.9s)',
     ],
     tech: ['Next.js', 'LangGraph', 'vLLM', 'Milvus', 'FortiSIEM', 'OpsRamp'],
-    metrics: { events: '2M+', latency: '485ms p50', models: '11 GPT-2' },
+    metrics: { events: '2M+', latency: '485ms p50' },
   },
   {
     title: 'Software Engineering Intern',
@@ -86,7 +88,7 @@ const SKILLS_CATEGORIES = [
   { name: 'Core', skills: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'Java', 'C++', 'Go', 'PHP'] },
   { name: 'Web', skills: ['React', 'Next.js', 'Laravel', 'Node.js', 'REST APIs', 'GraphQL'] },
   { name: 'AI/ML', skills: ['LangGraph', 'PyTorch', 'vLLM', 'Milvus', 'WandB', 'RAG', 'NLP', 'LLMs'] },
-  { name: 'Tools', skills: ['Git', 'Docker', 'GCP', 'Airflow', 'FortiSIEM', 'OpsRamp', 'Linux'] },
+  { name: 'Tools', skills: ['Git', 'Docker', 'GCP', 'Airflow', 'FortiSIEM', 'OpsRamp', 'Linux', 'Claude Code'] },
 ];
 
 function NavBar() {
@@ -186,10 +188,14 @@ function HeroSection() {
             </h1>
 
             <div className="mb-8">
-              <p className="text-xl text-gray-400 mb-2 cursor-blink">AI Engineer</p>
+              <p className="text-xl text-gray-400 mb-2">AI Engineer</p>
               <p className="text-sm text-gray-500 max-w-xl leading-relaxed">
-                Building intelligent systems at scale — from multi-tenant RAG architectures serving
-                <span className="gradient-text font-semibold"> 2M+ daily events</span> to custom LLM training pipelines on Tesla GPUs.
+                <TypingText
+                  text="Building intelligent systems at scale — from multi-tenant RAG architectures serving 2M+ daily events to custom LLM training pipelines on Tesla GPUs."
+                  speed={{ min: 20, max: 45 }}
+                  tokenSize={4}
+                  delay={500}
+                />
               </p>
             </div>
 
@@ -225,7 +231,7 @@ function HeroSection() {
             className="relative"
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,255,245,0.1)_0%,_transparent_70%)] blur-3xl" />
-            <div className="relative card rounded-lg p-8">
+            <div className="relative card rounded-lg p-10">
               <div className="font-mono text-xs mb-6" style={{ color: 'var(--cyan)' }}>
                 // SYSTEM_METRICS
               </div>
@@ -242,20 +248,20 @@ function HeroSection() {
                 <div className="h-px bg-[rgba(0,255,245,0.1)]" />
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span className="text-gray-500 text-xs block mb-1">EVENTS/DAY</span>
-                    <span className="metric-value text-lg">2M+</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500 text-xs block mb-1">LATENCY_P50</span>
-                    <span className="metric-value text-lg">485ms</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500 text-xs block mb-1">MODELS</span>
-                    <span className="metric-value text-lg">11</span>
+                    <span className="text-gray-500 text-xs block mb-1">DEVICE</span>
+                    <span className="metric-value text-sm">ASUS Ascent GX10</span>
                   </div>
                   <div>
                     <span className="text-gray-500 text-xs block mb-1">GPU</span>
-                    <span className="text-white">Tesla H100</span>
+                    <span className="text-white text-sm">NVIDIA Blackwell</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500 text-xs block mb-1">RAM</span>
+                    <span className="text-white text-sm">128GB Unified</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500 text-xs block mb-1">AI PERF</span>
+                    <span className="metric-value text-sm">1000 TOPS</span>
                   </div>
                 </div>
               </div>
@@ -283,35 +289,26 @@ function ExperienceSection() {
   return (
     <section id="work">
       <div className="max-w-7xl mx-auto px-8">
-        <ScrollReveal>
-          <div className="flex items-end justify-between mb-16">
-            <div>
-              <p className="font-mono text-xs mb-4" style={{ color: 'var(--cyan)' }}>CAREER_JOURNEY</p>
-              <h2 className="text-5xl font-display font-bold">
-                <span className="text-gray-400">Experience</span>
-              </h2>
-            </div>
-            <p className="hidden md:block text-gray-500 max-w-sm text-right font-mono text-sm">
-              &lt;building_ai_systems_that_scale/&gt;
-            </p>
+        <div className="flex items-end justify-between mb-16">
+          <div className="flex-1">
+            <TypingHeader prefix="CAREER_JOURNEY" title="Experience" />
           </div>
-        </ScrollReveal>
+          <p className="hidden md:block text-gray-500 max-w-sm text-right font-mono text-sm">
+            &lt;building_ai_systems_that_scale/&gt;
+          </p>
+        </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="timeline-line hidden md:block" />
-
-          <div className="space-y-12">
+        <div className="space-y-12">
             {EXPERIENCE.map((exp, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
                 <motion.div
-                  className="relative md:pl-16"
+                  className="relative"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <div className="card rounded-lg p-8 project-card">
+                  <div className="card rounded-lg p-10 project-card">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-3">
@@ -342,7 +339,14 @@ function ExperienceSection() {
                       {exp.description.map((desc, i) => (
                         <li key={i} className="flex items-start gap-3 text-gray-300 font-mono text-sm">
                           <span style={{ color: 'var(--green)' }}>►</span>
-                          <span>{desc}</span>
+                          <span className="flex-1">
+                            <TypingText
+                              text={desc}
+                              delay={i * 200}
+                              speed={{ min: 15, max: 40 }}
+                              tokenSize={4}
+                            />
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -356,7 +360,7 @@ function ExperienceSection() {
                     </div>
 
                     {exp.metrics && (
-                      <div className="p-4 bg-[rgba(0,0,0,0.3)] rounded border-l-2" style={{ borderColor: 'var(--amber)' }}>
+                      <div className="p-6 bg-[rgba(0,0,0,0.3)] rounded border-l-2" style={{ borderColor: 'var(--amber)' }}>
                         <div className="font-mono text-xs text-gray-500 mb-3">// METRICS</div>
                         <div className="flex gap-6">
                           {Object.entries(exp.metrics).map(([key, value]) => (
@@ -373,7 +377,6 @@ function ExperienceSection() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
 
         {/* Education card */}
         <ScrollReveal delay={0.3}>
@@ -383,7 +386,7 @@ function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="card rounded-lg p-8 text-center">
+            <div className="card rounded-lg p-10 text-center">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-sm bg-[rgba(255,107,0,0.1)] border border-[rgba(255,107,0,0.3)] text-amber-500 text-sm font-mono font-semibold mb-6">
                 <Award size={14} />
                 CUM_LAUDE
@@ -405,20 +408,15 @@ function ProjectsSection() {
   return (
     <section id="projects" className="py-32">
       <div className="max-w-7xl mx-auto px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="font-mono text-xs mb-4" style={{ color: 'var(--cyan)' }}>FEATURED_WORK</p>
-            <h2 className="text-5xl font-display font-bold">
-              <span className="text-gray-400">Projects</span>
-            </h2>
-          </div>
-        </ScrollReveal>
+        <div className="text-center mb-16">
+          <TypingHeader prefix="FEATURED_WORK" title="Projects" />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {PROJECTS.map((project, index) => (
             <ScrollReveal key={index} delay={index * 0.05}>
               <motion.div
-                className="card rounded-lg p-8 project-card"
+                className="card rounded-lg p-10 project-card"
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
@@ -436,7 +434,11 @@ function ProjectsSection() {
                 </h3>
 
                 <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-                  {project.description}
+                  <TypingText
+                    text={project.description}
+                    speed={{ min: 20, max: 50 }}
+                    tokenSize={5}
+                  />
                 </p>
 
                 {project.stats && (
@@ -472,28 +474,25 @@ function CertificationsSection() {
   return (
     <section className="py-32">
       <div className="max-w-7xl mx-auto px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="font-mono text-xs mb-4" style={{ color: 'var(--cyan)' }}>CREDENTIALS</p>
-            <h2 className="text-5xl font-display font-bold">
-              <span className="text-gray-400">Certifications</span>
-            </h2>
-          </div>
-        </ScrollReveal>
+        <div className="text-center mb-16">
+          <TypingHeader prefix="CREDENTIALS" title="Certifications" />
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {CERTIFICATIONS.map((cert, index) => (
             <ScrollReveal key={index} delay={index * 0.05}>
               <motion.div
-                className="card rounded-lg p-6 hover:-translate-y-1 transition-transform"
+                className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded flex items-center justify-center bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)]">
                     <Award size={16} style={{ color: 'var(--cyan)' }} />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-white font-semibold text-sm">{cert.name}</p>
+                  <div className="flex-1 text-left">
+                    <p className="text-white font-semibold text-sm">
+                      <TypingText text={cert.name} delay={index * 100} speed={{ min: 30, max: 60 }} tokenSize={2} />
+                    </p>
                   </div>
                 </div>
                 <p className="text-gray-500 text-xs mb-2">{cert.issuer}</p>
@@ -511,20 +510,15 @@ function SkillsSection() {
   return (
     <section id="skills" className="py-32">
       <div className="max-w-7xl mx-auto px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="font-mono text-xs mb-4" style={{ color: 'var(--cyan)' }}>EXPERTISE</p>
-            <h2 className="text-5xl font-display font-bold">
-              <span className="text-gray-400">Skills & Stack</span>
-            </h2>
-          </div>
-        </ScrollReveal>
+        <div className="text-center mb-16">
+          <TypingHeader prefix="EXPERTISE" title="Skills" suffix="& Stack" />
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SKILLS_CATEGORIES.map((category, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
               <motion.div
-                className="card rounded-lg p-8 hover:-translate-y-1 transition-transform"
+                className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-center gap-3 mb-8">
@@ -535,12 +529,17 @@ function SkillsSection() {
                 </div>
 
                 <div className="space-y-2">
-                  {category.skills.map((skill) => (
+                  {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skill}
                       className="px-4 py-2 rounded border border-[rgba(0,255,245,0.15)] hover:border-[#00fff5] hover:bg-[rgba(0,255,245,0.05)] transition-all text-gray-300 hover:text-white cursor-default font-mono text-sm"
                     >
-                      {skill}
+                      <TypingText
+                        text={skill}
+                        delay={skillIndex * 50}
+                        speed={{ min: 40, max: 80 }}
+                        tokenSize={1}
+                      />
                     </div>
                   ))}
                 </div>
@@ -569,8 +568,11 @@ function ContactSection() {
           </h2>
 
           <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto leading-relaxed font-mono text-sm">
-            Interested in collaborating on AI innovations? Have a question?
-            <br />I'd love to hear from you.
+            <TypingText
+              text="Interested in collaborating on AI innovations? Have a question? I'd love to hear from you."
+              speed={{ min: 25, max: 55 }}
+              tokenSize={3}
+            />
           </p>
         </ScrollReveal>
 
@@ -578,7 +580,7 @@ function ContactSection() {
           <ScrollReveal delay={0.1}>
             <motion.a
               href="mailto:ronaldjohnatanoso@gmail.com"
-              className="card rounded-lg p-8 hover:-translate-y-1 transition-transform"
+              className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
               whileHover={{ y: -4 }}
             >
               <div className="w-14 h-14 rounded flex items-center justify-center mx-auto mb-5 bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)] group-hover:bg-[rgba(0,255,245,0.2)] transition-colors">
@@ -594,7 +596,7 @@ function ContactSection() {
               href="https://linkedin.com/in/ronaldjohnatanoso"
               target="_blank"
               rel="noopener noreferrer"
-              className="card rounded-lg p-8 hover:-translate-y-1 transition-transform"
+              className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
               whileHover={{ y: -4 }}
             >
               <div className="w-14 h-14 rounded flex items-center justify-center mx-auto mb-5 bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)] group-hover:bg-[rgba(0,255,245,0.2)] transition-colors">
@@ -610,7 +612,7 @@ function ContactSection() {
               href="https://github.com/ronaldjohnatanoso"
               target="_blank"
               rel="noopener noreferrer"
-              className="card rounded-lg p-8 hover:-translate-y-1 transition-transform"
+              className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
               whileHover={{ y: -4 }}
             >
               <div className="w-14 h-14 rounded flex items-center justify-center mx-auto mb-5 bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)] group-hover:bg-[rgba(0,255,245,0.2)] transition-colors">
@@ -623,7 +625,7 @@ function ContactSection() {
         </div>
 
         <ScrollReveal delay={0.4}>
-          <div className="card rounded-lg p-8 inline-block">
+          <div className="card rounded-lg p-10 inline-block">
             <p className="text-gray-500 text-sm mb-3 font-mono">DIRECT_LINE</p>
             <a href="tel:+639163105015" className="text-2xl hover:text-[#00fff5] transition-colors font-mono" style={{ color: 'var(--cyan)' }}>
               0916 310 5015

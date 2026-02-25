@@ -27,7 +27,7 @@ interface TokenPosition {
 function Token({ token, position, onMouseMove }: {
   token: string;
   position: TokenPosition;
-  onMouseMove: (e: React.MouseEvent<HTMLSpanElement>, token: string) => void;
+  onMouseMove: (e: React.MouseEvent<HTMLSpanElement>) => void;
 }) {
   const style = {
     left: position.left,
@@ -112,7 +112,7 @@ export default function FloatingCodeParticles() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const handleTokenMouseEnter = (e: React.MouseEvent<HTMLSpanElement>, token: string) => {
+  const handleTokenMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
     const element = e.currentTarget;
     element.dataset.originalOpacity = element.style.opacity;
   };
