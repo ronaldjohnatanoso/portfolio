@@ -15,6 +15,7 @@ import {
   Zap,
   Activity,
   Code,
+  Download,
 } from 'lucide-react';
 import NeuralNetworkBackground from './components/NeuralNetworkBackground';
 import FloatingCodeParticles from './components/FloatingCodeParticles';
@@ -211,13 +212,21 @@ function HeroSection() {
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
                 className="group inline-flex items-center gap-3 px-6 py-3 bg-[#00fff5] text-[#030305] font-mono text-sm font-semibold hover:bg-[#39ff14] transition-colors"
               >
                 INITIATE_CONTACT
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a
+                href="/Ronald_Atanoso_Resume.pdf"
+                download
+                className="group inline-flex items-center gap-3 px-6 py-3 border border-[rgba(0,255,245,0.3)] hover:border-[#00fff5] hover:bg-[rgba(0,255,245,0.05)] transition-all font-mono text-sm"
+              >
+                <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+                DOWNLOAD_RESUME
               </a>
               <a
                 href="#projects"
@@ -585,7 +594,7 @@ function ContactSection() {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           <ScrollReveal delay={0.1}>
             <motion.a
               href="mailto:ronaldjohnatanoso@gmail.com"
@@ -629,6 +638,21 @@ function ContactSection() {
               </div>
               <h3 className="font-display font-semibold text-white mb-2">GitHub</h3>
               <p className="text-gray-500 text-sm font-mono">ronaldjohnatanoso</p>
+            </motion.a>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.35}>
+            <motion.a
+              href="/Ronald_Atanoso_Resume.pdf"
+              download
+              className="card rounded-lg p-10 hover:-translate-y-1 transition-transform"
+              whileHover={{ y: -4 }}
+            >
+              <div className="w-14 h-14 rounded flex items-center justify-center mx-auto mb-5 bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)] group-hover:bg-[rgba(0,255,245,0.2)] transition-colors">
+                <Download size={24} style={{ color: 'var(--green)' }} />
+              </div>
+              <h3 className="font-display font-semibold text-white mb-2">Resume</h3>
+              <p className="text-gray-500 text-sm font-mono">PDF Download</p>
             </motion.a>
           </ScrollReveal>
         </div>
