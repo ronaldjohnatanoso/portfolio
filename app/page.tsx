@@ -56,24 +56,28 @@ const PROJECTS = [
     description: 'Trained 11 GPT-2 models on 500K+ synthetic conversations. Optimized attention mechanisms improving compute-performance ratio by 17%.',
     tech: ['PyTorch', 'WandB', 'Tesla GPUs', 'Custom Training'],
     stats: { models: '11', data: '500K+', improvement: '17%' },
+    year: '2025',
   },
   {
     title: 'Automated Video Generator',
     description: 'End-to-end pipeline with Airflow DAGs and Celery workers for parallel voiceover, image scraping, and MoviePy compositing.',
     tech: ['Airflow', 'Celery', 'MoviePy', 'Python'],
     stats: { pipeline: 'automated', workers: 'parallel' },
+    year: '2025',
   },
   {
     title: 'LLM Evaluation Framework',
     description: 'Custom evaluation pipeline for synthetic conversational datasets using prompt-based meta-evaluation for coherence, factuality, and relevance.',
     tech: ['Python', 'Kiln AI', 'Custom Eval'],
     stats: { metrics: 'custom', pipeline: 'full' },
+    year: '2025',
   },
   {
     title: 'MNIST Recognition',
     description: 'Draw-and-predict web app with real-time ML inference. Deployed TensorFlow model via Google Cloud Functions.',
     tech: ['Flask', 'TensorFlow', 'GCP', 'Serverless'],
     stats: { accuracy: '98%', deployed: 'serverless' },
+    year: '2024',
   },
 ];
 
@@ -424,8 +428,13 @@ function ProjectsSection() {
                   <div className="w-12 h-12 rounded flex items-center justify-center bg-[rgba(0,255,245,0.1)] border border-[rgba(0,255,245,0.3)]">
                     <Terminal size={20} style={{ color: 'var(--cyan)' }} />
                   </div>
-                  <div className="font-mono text-xs text-gray-600">
-                    {String(index + 1).padStart(2, '0')}
+                  <div className="text-right">
+                    <div className="font-mono text-xs text-gray-600 mb-1">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <div className="font-mono text-xs" style={{ color: 'var(--amber)' }}>
+                      {project.year}
+                    </div>
                   </div>
                 </div>
 
